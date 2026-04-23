@@ -1,26 +1,102 @@
-@import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #111;
+  --window-bg: #ffffff;
+  --border-dark: #000000;
+  --maroon: #800000;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: 
+    linear-gradient(90deg, rgba(128, 0, 0, 0.05) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(rgba(128, 0, 0, 0.05) 1px, transparent 1px) 0 0 / 20px 20px,
+    linear-gradient(90deg, rgba(128, 0, 0, 0.1) 1px, transparent 1px) 0 0 / 100px 100px,
+    linear-gradient(rgba(128, 0, 0, 0.1) 1px, transparent 1px) 0 0 / 100px 100px,
+    #f4f4f4;
+  font-family: "MS Sans Serif", "Courier New", Courier, monospace;
+  color: #000;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.neocities-layout {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  border: 2px solid var(--border-dark);
+  background: var(--window-bg);
+  box-shadow: 8px 8px 0px rgba(0,0,0,1);
+}
+
+header {
+  background: var(--maroon);
+  color: white;
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #000;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+}
+
+nav {
+  display: flex;
+  gap: 0.5rem;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: bold;
+  background: #000;
+  padding: 2px 8px;
+  border: 1px solid #fff;
+}
+
+nav a:hover {
+  background: #fff;
+  color: #000;
+}
+
+main {
+  padding: 0;
+}
+
+.guide-container {
+  width: 100%;
+  height: calc(100vh - 100px);
+  background: #fff;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+footer {
+  padding: 4px;
+  font-size: 0.65rem;
+  text-align: center;
+  border-top: 1px solid #000;
+  background: #fff;
+}
+
+@media (max-width: 600px) {
+  body { padding: 0.5rem; }
+  .neocities-layout {
+    border: 2px solid #000;
+    box-shadow: 4px 4px 0px #000;
+  }
 }
