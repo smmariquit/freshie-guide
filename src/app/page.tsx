@@ -10,6 +10,12 @@ export default function Home() {
           <a href="https://docs.google.com/document/d/1AtzyVcQGWWCwJFFzmE8ZBTDNSVMQPaRzd8TYhlJFnWk/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
             [VIEW_DOC]
           </a>
+          <a href="https://uplb-trail.vercel.app" target="_blank" rel="noopener noreferrer">
+            [TRAIL]
+          </a>
+          <a href="https://upsked.com/uplb" target="_blank" rel="noopener noreferrer">
+            [UPSKED]
+          </a>
         </nav>
       </header>
 
