@@ -73,6 +73,36 @@ main {
   padding: 0;
 }
 
+.tab-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-bottom: 2px solid #000;
+  background: #e8e8e8;
+}
+
+.tab-link {
+  padding: 4px 14px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  font-family: "MS Sans Serif", "Courier New", Courier, monospace;
+  text-decoration: none;
+  color: #000;
+  border-right: 1px solid #000;
+  background: #e8e8e8;
+}
+
+.tab-link:hover {
+  background: #fff;
+}
+
+.tab-link.active {
+  background: #fff;
+  border-bottom: 2px solid #fff;
+  margin-bottom: -2px;
+  color: var(--maroon);
+}
+
 .guide-container {
   width: 100%;
   height: calc(100vh - 100px);
