@@ -222,22 +222,22 @@ footer {
 }
 
 .landing-subtitle {
-  font-size: 1rem;
-  color: #6b7280;
+  font-size: 1.125rem;
+  color: #374151;
   line-height: 1.5;
 }
 
 .guides-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
 
 .guide-card {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px;
+  gap: 20px;
+  padding: 20px;
   background: #f9fafb;
   border: 1px solid #f3f4f6;
   border-radius: 16px;
@@ -253,12 +253,12 @@ footer {
 }
 
 .guide-card-icon {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   background: #ffffff;
   border: 1px solid #f3f4f6;
   border-radius: 12px;
@@ -275,24 +275,24 @@ footer {
 .guide-card-content {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .guide-card-content h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: #111111;
 }
 
 .guide-card-content p {
-  font-size: 0.875rem;
-  color: #4b5563;
-  line-height: 1.4;
+  font-size: 0.95rem;
+  color: #1f2937;
+  line-height: 1.45;
 }
 
 .landing-footer {
-  font-size: 0.75rem;
-  color: #9ca3af;
+  font-size: 0.8rem;
+  color: #6b7280;
   text-align: center;
   margin-top: 12px;
   background: transparent !important;
