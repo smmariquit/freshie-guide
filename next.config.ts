@@ -5,31 +5,19 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
-      {
-        source: "/overview",
-        destination: "/freshie/overview",
-        permanent: true,
-      },
-      {
-        source: "/academics",
-        destination: "/freshie/academics",
-        permanent: true,
-      },
-      {
-        source: "/orgs",
-        destination: "/freshie/orgs",
-        permanent: true,
-      },
-      {
-        source: "/housing",
-        destination: "/freshie/housing",
-        permanent: true,
-      },
-      {
-        source: "/faq",
-        destination: "/freshie/faq",
-        permanent: true,
-      },
+      // Old legacy top-level shortcuts
+      { source: "/overview", destination: "/freshie", permanent: true },
+      { source: "/academics", destination: "/freshie", permanent: true },
+      { source: "/orgs", destination: "/freshie", permanent: true },
+      { source: "/housing", destination: "/freshie", permanent: true },
+      { source: "/faq", destination: "/freshie", permanent: true },
+      
+      // Old tabbed paths
+      { source: "/freshie/overview", destination: "/freshie", permanent: true },
+      { source: "/freshie/academics", destination: "/freshie", permanent: true },
+      { source: "/freshie/orgs", destination: "/freshie", permanent: true },
+      { source: "/freshie/housing", destination: "/freshie", permanent: true },
+      { source: "/freshie/faq", destination: "/freshie", permanent: true },
     ];
   },
 };

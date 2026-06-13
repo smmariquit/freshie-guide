@@ -23,11 +23,7 @@ export const GUIDES: Guide[] = [
     icon: "🌻",
     description: "A comprehensive handbook for incoming students of UPLB, covering academics, organizations, housing, and FAQs.",
     tabs: [
-      { slug: "overview",   label: "Overview",   googleTabId: "t.0" },
-      { slug: "academics",  label: "Academics",  googleTabId: "t.1" },
-      { slug: "orgs",       label: "Orgs",       googleTabId: "t.2" },
-      { slug: "housing",    label: "Housing",    googleTabId: "t.3" },
-      { slug: "faq",        label: "FAQ",        googleTabId: "t.4" },
+      { slug: "guide",      label: "Guide" },
     ],
   },
   {
