@@ -1,12 +1,12 @@
 // src/app/layout.tsx
 
 import type { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Stimmie's Freshie Guide (2026)",
-  description: "This is definitely one of the guides of all time.",
+  title: "Stimmie's Guides",
+  description: "Guides and handbooks written by Stimmie.",
   openGraph: {
     images: [
       {

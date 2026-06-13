@@ -1,16 +1,26 @@
 "use client";
 
 import Link from "next/link";
-import { TABS } from "./tabs";
+import { Guide } from "./guides";
 
-export default function TabNav({ activeSlug }: { activeSlug: string }) {
+interface TabNavProps {
+  guide: Guide;
+  activeTabSlug: string;
+}
+
+export default function TabNav({ guide, activeTabSlug }: TabNavProps) {
+  // If the guide only has 1 tab, we don't need to render the sub-tab navigation
+  if (guide.tabs.length <= 1) {
+    return null;
+  }
+
   return (
     <nav className="tab-nav">
-      {TABS.map((tab) => (
+      {guide.tabs.map((tab) => (
         <Link
           key={tab.slug}
-          href={`/${tab.slug}`}
-          className={tab.slug === activeSlug ? "tab-link active" : "tab-link"}
+          href={`/${guide.slug}/${tab.slug}`}
+          className={tab.slug === activeTabSlug ? "tab-link active" : "tab-link"}
         >
           {tab.label}
         </Link>

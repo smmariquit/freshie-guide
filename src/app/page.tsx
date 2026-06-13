@@ -1,36 +1,38 @@
 // src/app/page.tsx
 
-// src/app/page.tsx
+import Link from "next/link";
+import { GUIDES } from "./guides";
+
+export const metadata = {
+  title: "Stimmie's Guides",
+  description: "A directory of handbooks, guides, and tutorials.",
+};
 
 export default function Home() {
   return (
-    <div className="neocities-layout">
-      <header>
-        <div className="title">UPLB_GUIDE.DOC</div>
-        <nav>
-          <a href="http://room-tba.stimmie.dev/" target="_blank" rel="noopener noreferrer">
-            [ROOM_TBA]
-          </a>
-          <a href="https://docs.google.com/document/d/1AtzyVcQGWWCwJFFzmE8ZBTDNSVMQPaRzd8TYhlJFnWk/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
-            [VIEW_DOC]
-          </a>
-          <a href="https://uplb-trail.vercel.app" target="_blank" rel="noopener noreferrer">
-            [TRAIL]
-          </a>
-          <a href="https://upsked.com/uplb" target="_blank" rel="noopener noreferrer">
-            [UPSKED]
-          </a>
-        </nav>
+    <div className="landing-container">
+      <header style={{ marginBottom: "40px" }}>
+        <h1 className="landing-title">Stimmie&apos;s Guides</h1>
+        <p className="landing-subtitle">A collection of resources, handbooks, and playbooks.</p>
       </header>
 
       <main>
-        <div className="guide-container">
-          <iframe
-            src="https://docs.google.com/document/d/1AtzyVcQGWWCwJFFzmE8ZBTDNSVMQPaRzd8TYhlJFnWk/preview"
-            title="UPLB Freshie Guide"
-          ></iframe>
+        <div className="guides-list">
+          {GUIDES.map((guide) => (
+            <Link key={guide.slug} href={`/${guide.slug}`} className="guide-card">
+              <div className="guide-card-icon">{guide.icon}</div>
+              <div className="guide-card-content">
+                <h3>{guide.label}</h3>
+                <p>{guide.description}</p>
+              </div>
+            </Link>
+          ))}
         </div>
       </main>
+
+      <footer style={{ marginTop: "80px", borderTop: "1px solid #eaeaea", paddingTop: "20px", fontSize: "0.8rem", color: "#666", fontFamily: "inherit" }}>
+        &copy; {new Date().getFullYear()} Stimmie. All rights reserved.
+      </footer>
     </div>
   );
 }
