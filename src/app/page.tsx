@@ -11,13 +11,13 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="landing-page-wrapper">
-      <div className="landing-container">
-        <header>
+      <div className="landing-card">
+        <div className="landing-header">
           <h1 className="landing-title">Stimmie&apos;s Guides</h1>
           <p className="landing-subtitle">A collection of resources, handbooks, and playbooks.</p>
-        </header>
+        </div>
 
-        <main>
+        <div className="landing-main">
           <div className="guides-list">
             {GUIDES.map((guide) => (
               <Link key={guide.slug} href={`/${guide.slug}`} className="guide-card">
@@ -29,11 +29,11 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </main>
+        </div>
 
-        <footer className="landing-footer">
+        <div className="landing-footer">
           &copy; {new Date().getFullYear()} Stimmie. All rights reserved.
-        </footer>
+        </div>
       </div>
     </div>
   );
