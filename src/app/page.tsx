@@ -10,29 +10,31 @@ export const metadata = {
 
 export default function Home() {
   return (
-    <div className="landing-container">
-      <header style={{ marginBottom: "40px" }}>
-        <h1 className="landing-title">Stimmie&apos;s Guides</h1>
-        <p className="landing-subtitle">A collection of resources, handbooks, and playbooks.</p>
-      </header>
+    <div className="landing-page-wrapper">
+      <div className="landing-container">
+        <header>
+          <h1 className="landing-title">Stimmie&apos;s Guides</h1>
+          <p className="landing-subtitle">A collection of resources, handbooks, and playbooks.</p>
+        </header>
 
-      <main>
-        <div className="guides-list">
-          {GUIDES.map((guide) => (
-            <Link key={guide.slug} href={`/${guide.slug}`} className="guide-card">
-              <div className="guide-card-icon">{guide.icon}</div>
-              <div className="guide-card-content">
-                <h3>{guide.label}</h3>
-                <p>{guide.description}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </main>
+        <main>
+          <div className="guides-list">
+            {GUIDES.map((guide) => (
+              <Link key={guide.slug} href={`/${guide.slug}`} className="guide-card">
+                <div className="guide-card-icon">{guide.icon}</div>
+                <div className="guide-card-content">
+                  <h3>{guide.label}</h3>
+                  <p>{guide.description}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </main>
 
-      <footer style={{ marginTop: "80px", borderTop: "1px solid #eaeaea", paddingTop: "20px", fontSize: "0.8rem", color: "#666", fontFamily: "inherit" }}>
-        &copy; {new Date().getFullYear()} Stimmie. All rights reserved.
-      </footer>
+        <footer className="landing-footer">
+          &copy; {new Date().getFullYear()} Stimmie. All rights reserved.
+        </footer>
+      </div>
     </div>
   );
 }
