@@ -2,7 +2,8 @@
 
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { GUIDES, getPreviewUrl, getViewUrl } from "../guides";
+import { NativeGuideContent } from "../guide-content";
+import { GUIDES, getHeaderLinks } from "../guides";
 import TabNav from "../TabNav";
 
 export function generateStaticParams() {
@@ -30,6 +31,7 @@ export default async function GuidePage({
   if (!guide) notFound();
 
   const tab = guide.tabs[0];
+  const headerLinks = getHeaderLinks(guide, tab);
 
   return (
     <div className="layout-wrapper">
@@ -50,30 +52,34 @@ export default async function GuidePage({
         <header>
           <div className="title">{guide.slug.toUpperCase()}_GUIDE.DOC</div>
           <nav>
-            <a href="http://room-tba.stimmie.dev/" target="_blank" rel="noopener noreferrer">
-              [ROOM_TBA]
-            </a>
-            <a href={getViewUrl(guide, tab)} target="_blank" rel="noopener noreferrer">
-              [VIEW_DOC]
-            </a>
-            <a href="https://uplb-trail.vercel.app" target="_blank" rel="noopener noreferrer">
-              [TRAIL]
-            </a>
-            <a href="https://upsked.com/uplb" target="_blank" rel="noopener noreferrer">
-              [UPSKED]
-            </a>
+            {headerLinks.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {link.label}
+              </a>
+            ))}
           </nav>
         </header>
 
         <TabNav guide={guide} activeTabSlug={tab.slug} />
 
         <main>
-          <div className="guide-container">
-            <iframe
-              src={getPreviewUrl(guide, tab)}
-              title={guide.label}
-            ></iframe>
-          </div>
+          {guide.kind === "native" ? (
+            <div className="guide-container guide-container-native">
+              <NativeGuideContent slug={guide.slug} />
+            </div>
+          ) : (
+            <div className="guide-container">
+              <iframe
+                src={`https://docs.google.com/document/d/${guide.docId}/preview`}
+                title={guide.label}
+              ></iframe>
+            </div>
+          )}
         </main>
       </div>
     </div>
