@@ -1,3 +1,4 @@
+@import "tailwindcss";
 /* src/app/globals.css */
 
 :root {
@@ -356,4 +357,19 @@ footer {
   background: transparent !important;
   border-top: none !important;
   padding: 0 !important;
+}
+
+.site-footer {
+  max-width: 1200px;
+  margin: 1rem auto 0;
+  padding: 0 1rem 0.5rem;
+  text-align: center;
+  background: transparent;
+  border: none;
+}
+
+.visitor-count {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0;
 }

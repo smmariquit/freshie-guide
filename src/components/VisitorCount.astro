@@ -1,0 +1,42 @@
+---
+---
+
+<p class="visitor-count" id="visitor-count" hidden>
+  <span id="visitor-count-number"></span> visits
+</p>
+
+<script>
+  import {
+    VISITOR_STORAGE_KEY,
+    fetchAbacusCount,
+    getAbacusNamespace,
+    getTodayKey,
+  } from "../lib/abacus";
+
+  async function initVisitorCount() {
+    const container = document.getElementById("visitor-count");
+    const numberEl = document.getElementById("visitor-count-number");
+    if (!container || !numberEl) return;
+
+    const today = getTodayKey();
+    const lastCounted = localStorage.getItem(VISITOR_STORAGE_KEY);
+    const shouldHit = lastCounted !== today;
+    const namespace = getAbacusNamespace();
+
+    if (shouldHit) {
+      localStorage.setItem(VISITOR_STORAGE_KEY, today);
+    }
+
+    const count = await fetchAbacusCount(shouldHit ? "hit" : "get", namespace);
+
+    if (count === null) {
+      if (shouldHit) localStorage.removeItem(VISITOR_STORAGE_KEY);
+      return;
+    }
+
+    numberEl.textContent = count.toLocaleString();
+    container.hidden = false;
+  }
+
+  initVisitorCount();
+</script>

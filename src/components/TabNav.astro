@@ -1,0 +1,23 @@
+---
+import type { Guide } from '../lib/guides';
+
+interface Props {
+  guide: Guide;
+  activeTabSlug: string;
+}
+
+const { guide, activeTabSlug } = Astro.props;
+---
+
+{guide.tabs.length > 1 && (
+  <nav class="tab-nav">
+    {guide.tabs.map((tab) => (
+      <a
+        href={`/${guide.slug}/${tab.slug}`}
+        class={tab.slug === activeTabSlug ? "tab-link active" : "tab-link"}
+      >
+        {tab.label}
+      </a>
+    ))}
+  </nav>
+)}

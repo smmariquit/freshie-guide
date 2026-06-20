@@ -1,0 +1,15 @@
+---
+import { GUIDES } from '../../lib/guides';
+
+export function getStaticPaths() {
+  return GUIDES.flatMap((guide) =>
+    guide.tabs.map((tab) => ({
+      params: { guide: guide.slug, tab: tab.slug },
+    }))
+  );
+}
+
+const { guide } = Astro.params;
+
+return Astro.redirect(`/${guide}`);
+---

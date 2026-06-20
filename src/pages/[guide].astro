@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { GUIDES, getHeaderLinks } from '../lib/guides';
+import TabNav from '../components/TabNav.astro';
+import { NativeGuideContent } from '../components/guide-content/index.tsx';
+
+export function getStaticPaths() {
+  return GUIDES.map((guide) => ({
+    params: { guide: guide.slug },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const tab = guide.tabs[0];
+const headerLinks = getHeaderLinks(guide, tab);
+---
+
+<Layout title={`Stimmie's ${guide.label}`}>
+  <div class="layout-wrapper">
+    <div class="guide-tabs">
+      {GUIDES.map((g) => (
+        <a
+          href={`/${g.slug}`}
+          class={g.slug === guide.slug ? "guide-tab active" : "guide-tab"}
+        >
+          <span>{g.icon}</span>
+          <span>{g.slug}.doc</span>
+        </a>
+      ))}
+    </div>
+
+    <div class="neocities-layout">
+      <header>
+        <div class="title">{guide.slug.toUpperCase()}_GUIDE.DOC</div>
+        <nav>
+          {headerLinks.map((link) => (
+            <a
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </header>
+
+      <TabNav guide={guide} activeTabSlug={tab.slug} />
+
+      <main>
+        {guide.kind === "native" ? (
+          <div class="guide-container guide-container-native">
+            <NativeGuideContent slug={guide.slug} client:load />
+          </div>
+        ) : (
+          <div class="guide-container">
+            <iframe
+              src={`https://docs.google.com/document/d/${guide.docId}/preview`}
+              title={guide.label}
+            ></iframe>
+          </div>
+        )}
+      </main>
+    </div>
+  </div>
+</Layout>

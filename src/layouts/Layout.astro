@@ -1,0 +1,51 @@
+---
+import '../styles/globals.css';
+import VisitorCount from '../components/VisitorCount.astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Stimmie's Guides", 
+	description = "Guides and handbooks written by Stimmie." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌻</text></svg>" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/embed.webp" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:image" content="/embed.webp" />
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="font-sans">
+		<slot />
+		<footer class="site-footer">
+			<VisitorCount />
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--font-inter: 'Inter', sans-serif;
+	}
+	html {
+		font-family: var(--font-inter);
+	}
+</style>
