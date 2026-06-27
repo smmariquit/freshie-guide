@@ -1,42 +1,77 @@
 ---
+interface Props {
+  guideSlug?: string;
+  guideLabel?: string;
+  icon?: string;
+}
+
+const { guideSlug, guideLabel, icon = "🌻" } = Astro.props;
 ---
 
-<p class="visitor-count" id="visitor-count" hidden>
-  <span id="visitor-count-number"></span> visits
-</p>
+<div
+  class="visitor-count"
+  data-visitor-counter
+  data-guide-slug={guideSlug}
+  data-guide-label={guideLabel}
+  hidden
+>
+  <span class="visitor-count-icon" aria-hidden="true">{icon}</span>
+  <div class="visitor-count-copy">
+    <span class="visitor-count-number" data-visitor-number></span>
+    <span class="visitor-count-label" data-visitor-label></span>
+  </div>
+</div>
 
 <script>
   import {
-    VISITOR_STORAGE_KEY,
     fetchAbacusCount,
+    getAbacusKey,
     getAbacusNamespace,
     getTodayKey,
+    getVisitorStorageKey,
   } from "../lib/abacus";
 
-  async function initVisitorCount() {
-    const container = document.getElementById("visitor-count");
-    const numberEl = document.getElementById("visitor-count-number");
-    if (!container || !numberEl) return;
+  function formatLabel(count: number, label?: string | null) {
+    const noun = count === 1 ? "person" : "people";
+    if (label) return `${noun} helped by the ${label}`;
+    return `${noun} helped by these guides`;
+  }
 
+  async function initVisitorCount(root: HTMLElement) {
+    const numberEl = root.querySelector("[data-visitor-number]");
+    const labelEl = root.querySelector("[data-visitor-label]");
+    if (!numberEl || !labelEl) return;
+
+    const guideSlug = root.dataset.guideSlug || undefined;
+    const guideLabel = root.dataset.guideLabel || undefined;
+    const storageKey = getVisitorStorageKey(guideSlug);
+    const abacusKey = getAbacusKey(guideSlug);
     const today = getTodayKey();
-    const lastCounted = localStorage.getItem(VISITOR_STORAGE_KEY);
+    const lastCounted = localStorage.getItem(storageKey);
     const shouldHit = lastCounted !== today;
     const namespace = getAbacusNamespace();
 
     if (shouldHit) {
-      localStorage.setItem(VISITOR_STORAGE_KEY, today);
+      localStorage.setItem(storageKey, today);
     }
 
-    const count = await fetchAbacusCount(shouldHit ? "hit" : "get", namespace);
+    const count = await fetchAbacusCount(
+      shouldHit ? "hit" : "get",
+      namespace,
+      abacusKey,
+    );
 
     if (count === null) {
-      if (shouldHit) localStorage.removeItem(VISITOR_STORAGE_KEY);
+      if (shouldHit) localStorage.removeItem(storageKey);
       return;
     }
 
     numberEl.textContent = count.toLocaleString();
-    container.hidden = false;
+    labelEl.textContent = formatLabel(count, guideLabel);
+    root.hidden = false;
   }
 
-  initVisitorCount();
+  document.querySelectorAll<HTMLElement>("[data-visitor-counter]").forEach((root) => {
+    initVisitorCount(root);
+  });
 </script>

@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { GUIDES, getHeaderLinks } from '../lib/guides';
 import TabNav from '../components/TabNav.astro';
+import VisitorCount from '../components/VisitorCount.astro';
 import { NativeGuideContent } from '../components/guide-content/index.tsx';
 
 export function getStaticPaths() {
@@ -16,8 +17,10 @@ const tab = guide.tabs[0];
 const headerLinks = getHeaderLinks(guide, tab);
 ---
 
-<Layout title={`Stimmie's ${guide.label}`}>
+<Layout title={`Stimmie's ${guide.label}`} guide={guide}>
   <div class="layout-wrapper">
+    <a href="/" class="back-home">&larr; All guides</a>
+
     <div class="guide-tabs">
       {GUIDES.map((g) => (
         <a
@@ -62,6 +65,14 @@ const headerLinks = getHeaderLinks(guide, tab);
           </div>
         )}
       </main>
+
+      <footer class="guide-window-footer">
+        <VisitorCount
+          guideSlug={guide.slug}
+          guideLabel={guide.label}
+          icon={guide.icon}
+        />
+      </footer>
     </div>
   </div>
 </Layout>

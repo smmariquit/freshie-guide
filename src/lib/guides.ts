@@ -26,8 +26,7 @@ export const GUIDES: Guide[] = [
   {
     slug: "freshie",
     label: "Freshie Guide",
-    kind: "doc",
-    docId: "1AtzyVcQGWWCwJFFzmE8ZBTDNSVMQPaRzd8TYhlJFnWk",
+    kind: "native",
     icon: "🌻",
     description:
       "A comprehensive handbook for incoming students of UPLB, covering academics, organizations, housing, and FAQs.",
@@ -61,7 +60,8 @@ export const GUIDES: Guide[] = [
   {
     slug: "resume",
     label: "Resume & Professional Identity",
-    kind: "native",
+    kind: "doc",
+    docId: "1H6wD2lv-TLf5FDO4KJR56UvstU00o-Mu9n3KW_CO1So",
     icon: "📄",
     description:
       "How to present yourself on paper and online: resumes, CVs, LinkedIn, GitHub, and the stuff that makes you more than a bullet list.",

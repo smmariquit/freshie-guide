@@ -1,7 +1,7 @@
-import ResumeGuide from "./ResumeGuide";
+import FreshieGuide from "./FreshieGuide";
 
 const NATIVE_GUIDES = {
-  resume: ResumeGuide,
+  freshie: FreshieGuide,
 } as const;
 
 export function NativeGuideContent({ slug }: { slug: string }) {

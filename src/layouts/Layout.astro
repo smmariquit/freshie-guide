@@ -5,11 +5,17 @@ import VisitorCount from '../components/VisitorCount.astro';
 interface Props {
 	title?: string;
 	description?: string;
+	guide?: {
+		slug: string;
+		label: string;
+		icon: string;
+	};
 }
 
 const { 
 	title = "Stimmie's Guides", 
-	description = "Guides and handbooks written by Stimmie." 
+	description = "Guides and handbooks written by Stimmie.",
+	guide,
 } = Astro.props;
 ---
 
@@ -36,7 +42,8 @@ const {
 	<body class="font-sans">
 		<slot />
 		<footer class="site-footer">
-			<VisitorCount />
+			<a href="https://stimmie.dev" class="site-footer-link">&larr; stimmie.dev</a>
+			{!guide && <VisitorCount />}
 		</footer>
 	</body>
 </html>

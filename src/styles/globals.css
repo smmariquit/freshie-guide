@@ -32,6 +32,26 @@ body {
   margin: 0 auto;
 }
 
+.back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.5rem;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  color: #333;
+  background: #dcdcdc;
+  border: 2px solid var(--border-dark);
+  text-decoration: none;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 1);
+}
+
+.back-home:hover {
+  background: #fff;
+  color: #000;
+}
+
 .guide-tabs {
   display: flex;
   gap: 4px;
@@ -226,6 +246,18 @@ footer {
   background: #fff;
 }
 
+.guide-window-footer {
+  display: flex;
+  justify-content: center;
+  padding: 0.85rem 1rem 1rem;
+  border-top: 2px solid #000;
+  background: #f4f4f4;
+}
+
+.guide-window-footer .visitor-count {
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 1);
+}
+
 @media (max-width: 600px) {
   body { padding: 0.5rem; }
   .neocities-layout {
@@ -360,15 +392,64 @@ footer {
 
 .site-footer {
   max-width: 1200px;
-  margin: 1rem auto 0;
-  padding: 0 1rem 0.5rem;
+  margin: 1.25rem auto 0;
+  padding: 0 1rem 0.75rem;
   text-align: center;
   background: transparent;
   border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-footer-link {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-decoration: none;
+}
+
+.site-footer-link:hover {
+  color: #111;
+  text-decoration: underline;
 }
 
 .visitor-count {
-  font-size: 0.75rem;
-  color: #6b7280;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   margin: 0;
+  padding: 0.75rem 1.1rem;
+  background: #fff;
+  border: 2px solid var(--maroon);
+  border-radius: 999px;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 1);
+}
+
+.visitor-count-icon {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.visitor-count-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.1rem;
+  text-align: left;
+}
+
+.visitor-count-number {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--maroon);
+  letter-spacing: -0.03em;
+}
+
+.visitor-count-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #111;
 }
