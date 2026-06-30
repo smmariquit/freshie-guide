@@ -26,7 +26,8 @@ export const GUIDES: Guide[] = [
   {
     slug: "freshie",
     label: "Freshie Guide",
-    kind: "native",
+    kind: "doc",
+    docId: "1AtzyVcQGWWCwJFFzmE8ZBTDNSVMQPaRzd8TYhlJFnWk",
     icon: "🌻",
     description:
       "A comprehensive handbook for incoming students of UPLB, covering academics, organizations, housing, and FAQs.",

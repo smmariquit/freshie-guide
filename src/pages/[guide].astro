@@ -3,8 +3,6 @@ import Layout from '../layouts/Layout.astro';
 import { GUIDES, getHeaderLinks } from '../lib/guides';
 import TabNav from '../components/TabNav.astro';
 import VisitorCount from '../components/VisitorCount.astro';
-import { NativeGuideContent } from '../components/guide-content/index.tsx';
-
 export function getStaticPaths() {
   return GUIDES.map((guide) => ({
     params: { guide: guide.slug },
@@ -52,18 +50,12 @@ const headerLinks = getHeaderLinks(guide, tab);
       <TabNav guide={guide} activeTabSlug={tab.slug} />
 
       <main>
-        {guide.kind === "native" ? (
-          <div class="guide-container guide-container-native">
-            <NativeGuideContent slug={guide.slug} client:load />
-          </div>
-        ) : (
-          <div class="guide-container">
-            <iframe
-              src={`https://docs.google.com/document/d/${guide.docId}/preview`}
-              title={guide.label}
-            ></iframe>
-          </div>
-        )}
+        <div class="guide-container">
+          <iframe
+            src={`https://docs.google.com/document/d/${guide.docId}/preview`}
+            title={guide.label}
+          ></iframe>
+        </div>
       </main>
 
       <footer class="guide-window-footer">
