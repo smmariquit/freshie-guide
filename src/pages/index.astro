@@ -4,30 +4,30 @@ import { GUIDES } from '../lib/guides';
 ---
 
 <Layout>
-  <div class="landing-page-wrapper">
-    <div class="landing-card">
-      <div class="landing-header">
-        <h1 class="landing-title">Stimmie&apos;s Guides</h1>
-        <p class="landing-subtitle">A collection of resources, handbooks, and playbooks.</p>
-      </div>
+ <div class="landing-page-wrapper">
+ <div class="landing-card">
+ <div class="landing-header">
+ <h1 class="landing-title">Stimmie&apos;s Guides</h1>
+ <p class="landing-subtitle">A collection of resources, handbooks, and playbooks.</p>
+ </div>
 
-      <div class="landing-main">
-        <div class="guides-list">
-          {GUIDES.map((guide) => (
-            <a href={`/${guide.slug}`} class="guide-card">
-              <div class="guide-card-icon">{guide.icon}</div>
-              <div class="guide-card-content">
-                <h2>{guide.label}</h2>
-                <p>{guide.description}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
+ <div class="landing-main">
+ <div class="guides-list">
+ {GUIDES.map((guide) => (
+ <a href={`/${guide.slug}`} class="guide-card">
+ <div class="guide-card-icon">{guide.icon}</div>
+ <div class="guide-card-content">
+ <h2>{guide.label}</h2>
+ <p>{guide.description}</p>
+ </div>
+ </a>
+ ))}
+ </div>
+ </div>
 
-      <div class="landing-footer">
-        &copy; {new Date().getFullYear()} Stimmie. All rights reserved.
-      </div>
-    </div>
-  </div>
+ <div class="landing-footer">
+ &copy; {new Date().getFullYear()} Stimmie. All rights reserved.
+ </div>
+ </div>
+ </div>
 </Layout>

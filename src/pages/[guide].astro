@@ -4,10 +4,10 @@ import { GUIDES, getHeaderLinks } from '../lib/guides';
 import TabNav from '../components/TabNav.astro';
 import VisitorCount from '../components/VisitorCount.astro';
 export function getStaticPaths() {
-  return GUIDES.map((guide) => ({
-    params: { guide: guide.slug },
-    props: { guide },
-  }));
+ return GUIDES.map((guide) => ({
+ params: { guide: guide.slug },
+ props: { guide },
+ }));
 }
 
 const { guide } = Astro.props;
@@ -16,55 +16,55 @@ const headerLinks = getHeaderLinks(guide, tab);
 ---
 
 <Layout title={`Stimmie's ${guide.label}`} guide={guide}>
-  <div class="layout-wrapper">
-    <a href="/" class="back-home">&larr; All guides</a>
+ <div class="layout-wrapper">
+ <a href="/" class="back-home">&larr; All guides</a>
 
-    <div class="guide-tabs">
-      {GUIDES.map((g) => (
-        <a
-          href={`/${g.slug}`}
-          class={g.slug === guide.slug ? "guide-tab active" : "guide-tab"}
-        >
-          <span>{g.icon}</span>
-          <span>{g.slug}.doc</span>
-        </a>
-      ))}
-    </div>
+ <div class="guide-tabs">
+ {GUIDES.map((g) => (
+ <a
+ href={`/${g.slug}`}
+ class={g.slug === guide.slug ? "guide-tab active" : "guide-tab"}
+ >
+ <span>{g.icon}</span>
+ <span>{g.slug}.doc</span>
+ </a>
+ ))}
+ </div>
 
-    <div class="neocities-layout">
-      <header>
-        <div class="title">{guide.slug.toUpperCase()}_GUIDE.DOC</div>
-        <nav>
-          {headerLinks.map((link) => (
-            <a
-              href={link.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-      </header>
+ <div class="neocities-layout">
+ <header>
+ <div class="title">{guide.slug.toUpperCase()}_GUIDE.DOC</div>
+ <nav>
+ {headerLinks.map((link) => (
+ <a
+ href={link.href}
+ target="_blank"
+ rel="noopener noreferrer"
+ >
+ {link.label}
+ </a>
+ ))}
+ </nav>
+ </header>
 
-      <TabNav guide={guide} activeTabSlug={tab.slug} />
+ <TabNav guide={guide} activeTabSlug={tab.slug} />
 
-      <main>
-        <div class="guide-container">
-          <iframe
-            src={`https://docs.google.com/document/d/${guide.docId}/preview`}
-            title={guide.label}
-          ></iframe>
-        </div>
-      </main>
+ <main>
+ <div class="guide-container">
+ <iframe
+ src={`https://docs.google.com/document/d/${guide.docId}/preview`}
+ title={guide.label}
+ ></iframe>
+ </div>
+ </main>
 
-      <footer class="guide-window-footer">
-        <VisitorCount
-          guideSlug={guide.slug}
-          guideLabel={guide.label}
-          icon={guide.icon}
-        />
-      </footer>
-    </div>
-  </div>
+ <footer class="guide-window-footer">
+ <VisitorCount
+ guideSlug={guide.slug}
+ guideLabel={guide.label}
+ icon={guide.icon}
+ />
+ </footer>
+ </div>
+ </div>
 </Layout>
