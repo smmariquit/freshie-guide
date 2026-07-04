@@ -1,6 +1,7 @@
 ---
 import '../styles/globals.css';
 import VisitorCount from '../components/VisitorCount.astro';
+import LegalMicroLink from '../components/LegalMicroLink.astro';
 
 interface Props {
 	title?: string;
@@ -44,6 +45,7 @@ const {
 		<footer class="site-footer">
 			<a href="https://stimmie.dev" class="site-footer-link">&larr; stimmie.dev</a>
 			{!guide && <VisitorCount />}
+			<LegalMicroLink />
 		</footer>
 	</body>
 </html>

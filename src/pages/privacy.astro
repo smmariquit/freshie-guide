@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Privacy Policy | Stimmie's Guides"
+  description="How Stimmie's Guides handles visitor data, analytics, and third-party services."
+>
+  <main class="legal-page">
+    <a href="/" class="back-link">&larr; All guides</a>
+
+    <header class="legal-header">
+      <h1>Privacy Policy</h1>
+      <p class="legal-lede">
+        Last updated: July 4, 2026. Stimmie's Guides is a personal student-resource site
+        operated by Stimmie. It is <strong>not</strong> an official University of the
+        Philippines Los Baños (UPLB) website.
+      </p>
+    </header>
+
+    <article class="legal-body">
+      <section>
+        <h2>What this site is</h2>
+        <p>
+          This site hosts free guides and handbooks for students. There are no user
+          accounts, logins, or comment forms. You can read everything without signing up.
+        </p>
+      </section>
+
+      <section>
+        <h2>Information we may process</h2>
+        <ul>
+          <li>
+            <strong>Visitor counter.</strong> A lightweight counter (via abacus.jasoncameron.dev)
+            records aggregate page visits per guide. Your browser may store a local date stamp
+            so repeat views on the same day are not double-counted.
+          </li>
+          <li>
+            <strong>Analytics.</strong> The site may use Vercel Web Analytics to understand
+            traffic patterns (page views, referrers). We do not intentionally collect your
+            name or student number through analytics.
+          </li>
+          <li>
+            <strong>Hosting logs.</strong> Vercel and our hosting providers may log standard
+            request metadata (IP address, user agent, timestamps) for security and reliability.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>What we do not do</h2>
+        <ul>
+          <li>We do not sell personal data.</li>
+          <li>We do not require accounts or collect passwords on this site.</li>
+          <li>We do not run advertising trackers beyond basic hosting/analytics noted above.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Third-party links</h2>
+        <p>
+          Guides may link to external sites (campus systems, tools, social pages). Those
+          services have their own privacy policies.
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          Questions about this policy? Reach out via
+          <a href="https://stimmie.dev" target="_blank" rel="noopener noreferrer">stimmie.dev</a>.
+        </p>
+      </section>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .legal-page {
+    max-width: 42rem;
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .back-link {
+    font-size: 0.8rem;
+    color: #6b7280;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    color: #111;
+    text-decoration: underline;
+  }
+
+  .legal-header {
+    margin: 1.5rem 0 2rem;
+  }
+
+  .legal-header h1 {
+    font-size: 1.75rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .legal-lede {
+    color: #4b5563;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .legal-body section {
+    margin-bottom: 1.75rem;
+  }
+
+  .legal-body h2 {
+    font-size: 1.1rem;
+    margin: 0 0 0.5rem;
+  }
+
+  .legal-body p,
+  .legal-body li {
+    color: #4b5563;
+    line-height: 1.65;
+    font-size: 0.95rem;
+  }
+
+  .legal-body ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.25rem;
+  }
+
+  .legal-body a {
+    color: inherit;
+  }
+</style>
