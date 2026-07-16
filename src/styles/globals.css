@@ -333,13 +333,12 @@ footer {
   border-radius: 16px;
   text-decoration: none;
   color: inherit;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .guide-card:hover {
   background: #f3f4f6;
   border-color: #e5e7eb;
-  transform: translateY(-2px);
 }
 
 .guide-card-icon {
@@ -353,12 +352,11 @@ footer {
   border: 1px solid #f3f4f6;
   border-radius: 12px;
   flex-shrink: 0;
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
 }
 
 .guide-card:hover .guide-card-icon {
-  transform: scale(1.05);
   border-color: #e5e7eb;
 }
 
