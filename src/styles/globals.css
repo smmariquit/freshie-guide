@@ -328,6 +328,7 @@ footer {
   align-items: center;
   gap: 20px;
   padding: 20px;
+  min-height: 72px;
   background: #f9fafb;
   border: 1px solid #f3f4f6;
   border-radius: 16px;
@@ -339,6 +340,12 @@ footer {
 .guide-card:hover {
   background: #f3f4f6;
   border-color: #e5e7eb;
+}
+
+.guide-card:focus-visible {
+  outline: 3px solid #111111;
+  outline-offset: 3px;
+  border-color: #d1d5db;
 }
 
 .guide-card-icon {
