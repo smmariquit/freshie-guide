@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/matter-js": "^0.20.2",
-    "@types/node": "^20",
+    "@types/node": "^26",
     "typescript": "^5"
   },
   "overrides": {
