@@ -21,7 +21,7 @@
   "devDependencies": {
     "@types/matter-js": "^0.20.2",
     "@types/node": "^20",
-    "typescript": "^5"
+    "typescript": "^7"
   },
   "overrides": {
     "vite": "^7.3.0"
