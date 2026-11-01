@@ -1,4 +1,4 @@
-// src/app/guides.ts
+// src/lib/guides.ts
 
 export interface GuideTab {
   slug: string;
@@ -45,7 +45,7 @@ export const GUIDES: Guide[] = [
     docId: "1cJya3Zb2ck9vkxIKc1LQjJomQS_LFtBOABlzHrb7Z5s",
     icon: "🏆",
     description:
-      "A playbook and survival guide detailing strategies, tips, and guidelines for competing in and winning hackathons.",
+      "A free playbook for joining and winning hackathons: team building, a day-of plan, templates, my full history and 16 sample projects.",
     tabs: [{ slug: "guide", label: "Guide" }],
   },
   {

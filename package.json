@@ -10,16 +10,10 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/react": "^5.0.7",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
-    "astro": "^6.4.7",
-    "matter-js": "^0.20.0",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^6.4.7"
   },
   "devDependencies": {
-    "@types/matter-js": "^0.20.2",
     "@types/node": "^20",
     "typescript": "^5"
   },
