@@ -1,10 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
 ---
 
 <Layout title="Page not found | Stimmie's Guides" description="This page does not exist.">
  <main id="main" class="shell shell-legal"><div class="legal-page">
- <a href="/" class="back-link">&larr; All guides</a>
+ <a href="/" class="back-link"><Icon name="left" size={16} /> All guides</a>
  <h1>Page not found</h1>
  <p class="lead">That link does not go anywhere. Pick a guide from the home page.</p>
  </div></main>
