@@ -3,7 +3,7 @@
    and IBM Plex Mono for window chrome. The guide text itself is a Google Doc in Work Sans. */
 
 :root {
-  --font-ui: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-ui: "Work Sans Variable", "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --ink: oklch(20% 0.012 25);
@@ -204,7 +204,7 @@ a {
   background: var(--wash);
   border-top: var(--border);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--ink-soft);
 }
 
@@ -588,6 +588,10 @@ a {
   .win-btn {
     min-width: 44px;
     justify-content: center;
+  }
+
+  .win-status-note {
+    display: none;
   }
 
   .hub-body {

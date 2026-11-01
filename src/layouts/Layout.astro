@@ -1,4 +1,7 @@
 ---
+import '@fontsource-variable/work-sans';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/600.css';
 import '../styles/globals.css';
 import LegalMicroLink from '../components/LegalMicroLink.astro';
 
@@ -19,8 +22,6 @@ const {
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
-const fonts =
-	"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Work+Sans:wght@400;500;600;700&display=swap";
 ---
 
 <!doctype html>
@@ -46,10 +47,7 @@ const fonts =
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={ogImage} />
 
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href={fonts} rel="stylesheet" media="print" onload="this.media='all'" />
-		<noscript><link href={fonts} rel="stylesheet" /></noscript>
+		{app && <link rel="preconnect" href="https://docs.google.com" />}
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9785940474424207"
 		     crossorigin="anonymous" is:inline></script>
 	</head>
