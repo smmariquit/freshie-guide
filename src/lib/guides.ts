@@ -49,16 +49,6 @@ export const GUIDES: Guide[] = [
     tabs: [{ slug: "guide", label: "Guide" }],
   },
   {
-    slug: "tech",
-    label: "Tech Guide",
-    kind: "doc",
-    docId: "1cJya3Zb2ck9vkxIKc1LQjJomQS_LFtBOABlzHrb7Z5s",
-    icon: "💻",
-    description:
-      "A collection of tech guides, tutorials, system setups, and development practices.",
-    tabs: [{ slug: "guide", label: "Guide" }],
-  },
-  {
     slug: "resume",
     label: "Resume & Professional Identity",
     kind: "doc",
