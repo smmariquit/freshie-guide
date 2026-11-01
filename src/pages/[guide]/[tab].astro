@@ -1,15 +1,25 @@
 ---
+import Layout from '../../layouts/Layout.astro';
+import GuideWindow from '../../components/GuideWindow.astro';
 import { GUIDES } from '../../lib/guides';
 
 export function getStaticPaths() {
- return GUIDES.flatMap((guide) =>
- guide.tabs.map((tab) => ({
- params: { guide: guide.slug, tab: tab.slug },
- }))
- );
+  return GUIDES.flatMap((guide) =>
+    guide.tabs.slice(1).map((tab) => ({
+      params: { guide: guide.slug, tab: tab.slug },
+      props: { guide, tab },
+    })),
+  );
 }
 
-const { guide } = Astro.params;
-
-return Astro.redirect(`/${guide}`);
+const { guide, tab } = Astro.props;
 ---
+
+<Layout
+  title={`${tab.label} | Stimmie's ${guide.label}`}
+  description={guide.description}
+  image={guide.ogImage}
+  app
+>
+  <GuideWindow guide={guide} tab={tab} />
+</Layout>

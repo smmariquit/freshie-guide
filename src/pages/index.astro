@@ -1,33 +1,42 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import { GUIDES } from '../lib/guides';
+import VisitorCount from '../components/VisitorCount.astro';
+import { GUIDES, getTabHref } from '../lib/guides';
+
+const guides = [...GUIDES].sort((a, b) => Number(!!b.badge) - Number(!!a.badge));
 ---
 
 <Layout>
- <div class="landing-page-wrapper">
- <div class="landing-card">
- <div class="landing-header">
- <h1 class="landing-title">Stimmie&apos;s Guides</h1>
- <p class="landing-subtitle">A collection of resources, handbooks, and playbooks.</p>
- </div>
-
- <div class="landing-main">
- <div class="guides-list">
- {GUIDES.map((guide) => (
- <a href={`/${guide.slug}`} class="guide-card">
- <div class="guide-card-icon">{guide.icon}</div>
- <div class="guide-card-content">
- <h2>{guide.label}</h2>
- <p>{guide.description}</p>
- </div>
- </a>
- ))}
- </div>
- </div>
-
- <div class="landing-footer">
- &copy; {new Date().getFullYear()} Stimmie. All rights reserved.
- </div>
- </div>
- </div>
+	<main id="main" class="shell shell-hub">
+		<section class="window window-hub" aria-labelledby="hub-title">
+			<header class="win-bar">
+				<span class="win-title">GUIDES</span>
+			</header>
+			<div class="hub-body">
+				<h1 id="hub-title">Stimmie&apos;s Guides</h1>
+				<p class="lead">A collection of resources, handbooks, and playbooks.</p>
+				<ul class="guide-list">
+					{guides.map((guide) => (
+						<li>
+							<a href={getTabHref(guide, guide.tabs[0])} class="guide-row">
+								<span class="guide-icon" aria-hidden="true">{guide.icon}</span>
+								<span class="guide-text">
+									<span class="guide-name">
+										{guide.label}
+										{guide.badge && <span class="guide-badge">{guide.badge}</span>}
+									</span>
+									<span class="guide-desc">{guide.description}</span>
+								</span>
+								<span class="guide-go" aria-hidden="true">&rarr;</span>
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+			<footer class="win-status">
+				<VisitorCount />
+				<span class="win-status-note">&copy; {new Date().getFullYear()} Stimmie</span>
+			</footer>
+		</section>
+	</main>
 </Layout>
