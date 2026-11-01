@@ -6,6 +6,7 @@ import LegalMicroLink from '../components/LegalMicroLink.astro';
 interface Props {
 	title?: string;
 	description?: string;
+	image?: string;
 	guide?: {
 		slug: string;
 		label: string;
@@ -16,11 +17,12 @@ interface Props {
 const { 
 	title = "Stimmie's Guides", 
 	description = "Guides and handbooks written by Stimmie.",
+	image = "/embed.webp",
 	guide,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL('/embed.webp', Astro.site);
+const ogImage = new URL(image, Astro.site);
 ---
 
 <!doctype html>

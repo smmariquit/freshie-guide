@@ -19,6 +19,7 @@ export interface Guide {
   tabs: GuideTab[];
   icon: string;
   description: string;
+  ogImage?: string;
   headerLinks?: GuideHeaderLink[];
 }
 
@@ -43,6 +44,7 @@ export const GUIDES: Guide[] = [
     kind: "doc",
     docId: "1cJya3Zb2ck9vkxIKc1LQjJomQS_LFtBOABlzHrb7Z5s",
     icon: "🏆",
+    ogImage: "/og/hackathons.jpg",
     description:
       "A free playbook for joining and winning hackathons: team building, a day-of plan, templates, my full history and 16 sample projects.",
     tabs: [{ slug: "guide", label: "Guide" }],
