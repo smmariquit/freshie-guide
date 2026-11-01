@@ -2,6 +2,7 @@
 import { GUIDES, getHeaderLinks, getPreviewUrl, getViewUrl, getTabHref } from '../lib/guides';
 import type { Guide, GuideTab } from '../lib/guides';
 import VisitorCount from './VisitorCount.astro';
+import Icon from './Icon.astro';
 
 interface Props {
   guide: Guide;
@@ -20,7 +21,7 @@ const showTabs = guide.tabs.length > 1;
   <section class="window" aria-label={guide.label}>
     <header class="win-bar">
       <a class="win-btn" href="/" title="All guides">
-        <span aria-hidden="true">&larr;</span>
+        <Icon name="left" />
         <span class="win-btn-text">All guides</span>
       </a>
       <h1 class="win-title">{guide.label}</h1>
@@ -32,7 +33,7 @@ const showTabs = guide.tabs.length > 1;
         title="Open in Google Docs"
       >
         <span class="win-btn-text">Open in Google Docs</span>
-        <span aria-hidden="true">&nearr;</span>
+        <Icon name="external" />
         <span class="sr-only">(opens in a new tab)</span>
       </a>
     </header>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import VisitorCount from '../components/VisitorCount.astro';
+import Icon from '../components/Icon.astro';
 import { GUIDES, getTabHref } from '../lib/guides';
 
 const guides = [...GUIDES].sort((a, b) => Number(!!b.badge) - Number(!!a.badge));
@@ -27,7 +28,7 @@ const guides = [...GUIDES].sort((a, b) => Number(!!b.badge) - Number(!!a.badge))
 									</span>
 									<span class="guide-desc">{guide.description}</span>
 								</span>
-								<span class="guide-go" aria-hidden="true">&rarr;</span>
+								<span class="guide-go"><Icon name="right" size={22} /></span>
 							</a>
 						</li>
 					))}

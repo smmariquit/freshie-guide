@@ -1,9 +1,10 @@
 ---
 import '@fontsource-variable/work-sans';
-import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
 import '@fontsource/ibm-plex-mono/600.css';
 import '../styles/globals.css';
 import LegalMicroLink from '../components/LegalMicroLink.astro';
+import Icon from '../components/Icon.astro';
 
 interface Props {
 	title?: string;
@@ -55,7 +56,7 @@ const ogImage = new URL(image, Astro.site);
 		<a class="skip-link" href="#main">Skip to content</a>
 		<slot />
 		<footer class="site-footer">
-			<a href="https://stimmie.dev" class="site-footer-link">&larr; stimmie.dev</a>
+			<a href="https://stimmie.dev" class="site-footer-link"><Icon name="left" size={16} /> stimmie.dev</a>
 			<LegalMicroLink />
 		</footer>
 	</body>

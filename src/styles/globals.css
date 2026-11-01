@@ -7,7 +7,7 @@
   --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   --ink: oklch(20% 0.012 25);
-  --ink-soft: oklch(41% 0.012 25);
+  --ink-soft: oklch(30% 0.012 25);
   --paper: oklch(96.5% 0.003 25);
   --window: oklch(100% 0 0);
   --wash: oklch(95% 0.005 25);
@@ -52,6 +52,7 @@ body {
   padding: var(--space-4);
   font-family: var(--font-ui);
   font-size: 1rem;
+  font-weight: 450;
   line-height: 1.55;
   color: var(--ink);
   background:
@@ -80,6 +81,11 @@ a {
 .tab[aria-current="page"]:focus-visible {
   outline-color: #fff;
   outline-offset: 2px;
+}
+
+.icon {
+  flex: none;
+  display: block;
 }
 
 .sr-only {
@@ -205,6 +211,7 @@ a {
   border-top: var(--border);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
+  font-weight: 500;
   color: var(--ink-soft);
 }
 
@@ -276,6 +283,7 @@ a {
 .related span {
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
@@ -383,6 +391,7 @@ a {
   margin-top: var(--space-3);
   max-width: 60ch;
   font-size: 1.0625rem;
+  font-weight: 500;
   color: var(--ink-soft);
 }
 
@@ -450,13 +459,13 @@ a {
 .guide-desc {
   color: var(--ink-soft);
   font-size: 0.9375rem;
+  font-weight: 500;
   max-width: 62ch;
 }
 
 .guide-go {
   align-self: center;
-  font-family: var(--font-mono);
-  font-size: 1.25rem;
+  display: inline-flex;
   transition: transform 0.15s var(--ease-out);
 }
 
@@ -506,6 +515,7 @@ a {
 .site-footer a {
   display: inline-flex;
   align-items: center;
+  gap: var(--space-2);
   min-height: 44px;
   padding-inline: var(--space-2);
   text-underline-offset: 3px;
@@ -516,6 +526,11 @@ a {
 }
 
 .legal-page .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 44px;
+  font-weight: 500;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   text-underline-offset: 3px;
@@ -538,6 +553,7 @@ a {
 
 .legal-lede {
   max-width: 62ch;
+  font-weight: 500;
   color: var(--ink-soft);
 }
 
@@ -553,7 +569,7 @@ a {
 .legal-body p,
 .legal-body li {
   max-width: 68ch;
-  color: var(--ink-soft);
+  color: var(--ink);
 }
 
 .legal-body ul {
