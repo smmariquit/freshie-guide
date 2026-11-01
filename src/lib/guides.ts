@@ -33,9 +33,8 @@ export const GUIDES: Guide[] = [
       "A comprehensive handbook for incoming students of UPLB, covering academics, organizations, housing, and FAQs.",
     tabs: [{ slug: "guide", label: "Guide" }],
     headerLinks: [
-      { label: "[ROOM_TBA]", href: "http://room-tba.stimmie.dev/" },
+      { label: "[ROOM_TBA]", href: "https://room-tba.uplb.tools" },
       { label: "[TRAIL]", href: "https://uplb-trail.vercel.app" },
-      { label: "[UPSKED]", href: "https://upsked.com/uplb" },
     ],
   },
   {
