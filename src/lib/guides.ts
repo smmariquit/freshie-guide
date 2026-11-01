@@ -1,4 +1,4 @@
-// src/app/guides.ts
+// src/lib/guides.ts
 
 export interface GuideTab {
   slug: string;
@@ -33,9 +33,8 @@ export const GUIDES: Guide[] = [
       "A comprehensive handbook for incoming students of UPLB, covering academics, organizations, housing, and FAQs.",
     tabs: [{ slug: "guide", label: "Guide" }],
     headerLinks: [
-      { label: "[ROOM_TBA]", href: "http://room-tba.stimmie.dev/" },
+      { label: "[ROOM_TBA]", href: "https://room-tba.uplb.tools" },
       { label: "[TRAIL]", href: "https://uplb-trail.vercel.app" },
-      { label: "[UPSKED]", href: "https://upsked.com/uplb" },
     ],
   },
   {
@@ -45,17 +44,7 @@ export const GUIDES: Guide[] = [
     docId: "1cJya3Zb2ck9vkxIKc1LQjJomQS_LFtBOABlzHrb7Z5s",
     icon: "🏆",
     description:
-      "A playbook and survival guide detailing strategies, tips, and guidelines for competing in and winning hackathons.",
-    tabs: [{ slug: "guide", label: "Guide" }],
-  },
-  {
-    slug: "tech",
-    label: "Tech Guide",
-    kind: "doc",
-    docId: "1cJya3Zb2ck9vkxIKc1LQjJomQS_LFtBOABlzHrb7Z5s",
-    icon: "💻",
-    description:
-      "A collection of tech guides, tutorials, system setups, and development practices.",
+      "A free playbook for joining and winning hackathons: team building, a day-of plan, templates, my full history and 16 sample projects.",
     tabs: [{ slug: "guide", label: "Guide" }],
   },
   {

@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page not found | Stimmie's Guides" description="This page does not exist.">
+ <main class="legal-page">
+ <a href="/" class="back-link">&larr; All guides</a>
+ <h1 class="not-found-title">Page not found</h1>
+ <p class="not-found-text">That link does not go anywhere. Pick a guide from the home page.</p>
+ </main>
+</Layout>
+
+<style>
+.legal-page {
+ max-width: 42rem;
+ margin: 0 auto;
+ padding: 2rem 1rem 4rem;
+ }
+.back-link { font-size: 0.8rem; color: #6b7280; text-decoration: none; }
+.back-link:hover { color: #111; text-decoration: underline; }
+.not-found-title { font-size: 1.75rem; margin: 1.5rem 0 0.75rem; }
+.not-found-text { color: #4b5563; line-height: 1.6; }
+</style>
