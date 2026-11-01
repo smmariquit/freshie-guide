@@ -1,28 +1,26 @@
 ---
 import '../styles/globals.css';
-import VisitorCount from '../components/VisitorCount.astro';
 import LegalMicroLink from '../components/LegalMicroLink.astro';
 
 interface Props {
 	title?: string;
 	description?: string;
 	image?: string;
-	guide?: {
-		slug: string;
-		label: string;
-		icon: string;
-	};
+	/** full-viewport app shell (guide pages) instead of a scrolling page */
+	app?: boolean;
 }
 
-const { 
-	title = "Stimmie's Guides", 
+const {
+	title = "Stimmie's Guides",
 	description = "Guides and handbooks written by Stimmie.",
 	image = "/embed.webp",
-	guide,
+	app = false,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const ogImage = new URL(image, Astro.site);
+const fonts =
+	"https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Work+Sans:wght@400;500;600;700&display=swap";
 ---
 
 <!doctype html>
@@ -31,10 +29,11 @@ const ogImage = new URL(image, Astro.site);
 		<meta charset="UTF-8" />
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#6b1a1a" />
 		<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌻</text></svg>" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		
+
 		<link rel="canonical" href={canonical} />
 		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content="Stimmie's Guides" />
@@ -49,33 +48,17 @@ const ogImage = new URL(image, Astro.site);
 
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-			rel="stylesheet"
-			media="print"
-			onload="this.media='all'"
-		/>
-		<noscript>
-			<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-		</noscript>
+		<link href={fonts} rel="stylesheet" media="print" onload="this.media='all'" />
+		<noscript><link href={fonts} rel="stylesheet" /></noscript>
 		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9785940474424207"
 		     crossorigin="anonymous" is:inline></script>
 	</head>
-	<body class="font-sans">
+	<body class={app ? 'app-shell' : undefined}>
+		<a class="skip-link" href="#main">Skip to content</a>
 		<slot />
 		<footer class="site-footer">
 			<a href="https://stimmie.dev" class="site-footer-link">&larr; stimmie.dev</a>
-			{!guide && <VisitorCount />}
 			<LegalMicroLink />
 		</footer>
 	</body>
 </html>
-
-<style is:global>
-	:root {
-		--font-inter: 'Inter', sans-serif;
-	}
-	html {
-		font-family: var(--font-inter);
-	}
-</style>

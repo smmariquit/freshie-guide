@@ -6,7 +6,7 @@ import Layout from '../layouts/Layout.astro';
  title="Privacy Policy | Stimmie's Guides"
  description="How Stimmie's Guides handles visitor data, analytics, and third-party services."
 >
- <main class="legal-page">
+ <main id="main" class="shell shell-legal"><div class="legal-page">
  <a href="/" class="back-link">&larr; All guides</a>
 
  <header class="legal-header">
@@ -77,64 +77,6 @@ import Layout from '../layouts/Layout.astro';
  </p>
  </section>
  </article>
- </main>
+ </div></main>
 </Layout>
 
-<style>
-.legal-page {
- max-width: 42rem;
- margin: 0 auto;
- padding: 2rem 1rem 4rem;
- }
-
-.back-link {
- font-size: 0.8rem;
- color: #6b7280;
- text-decoration: none;
- }
-
-.back-link:hover {
- color: #111;
- text-decoration: underline;
- }
-
-.legal-header {
- margin: 1.5rem 0 2rem;
- }
-
-.legal-header h1 {
- font-size: 1.75rem;
- margin: 0 0 0.75rem;
- }
-
-.legal-lede {
- color: #4b5563;
- line-height: 1.6;
- margin: 0;
- }
-
-.legal-body section {
- margin-bottom: 1.75rem;
- }
-
-.legal-body h2 {
- font-size: 1.1rem;
- margin: 0 0 0.5rem;
- }
-
-.legal-body p,
-.legal-body li {
- color: #4b5563;
- line-height: 1.65;
- font-size: 0.95rem;
- }
-
-.legal-body ul {
- margin: 0.5rem 0 0;
- padding-left: 1.25rem;
- }
-
-.legal-body a {
- color: inherit;
- }
-</style>

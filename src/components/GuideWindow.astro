@@ -1,0 +1,138 @@
+---
+import { GUIDES, getHeaderLinks, getPreviewUrl, getViewUrl, getTabHref } from '../lib/guides';
+import type { Guide, GuideTab } from '../lib/guides';
+import VisitorCount from './VisitorCount.astro';
+
+interface Props {
+  guide: Guide;
+  tab: GuideTab;
+}
+
+const { guide, tab } = Astro.props;
+const topSlug = tab.parent ?? tab.slug;
+const topTabs = guide.tabs.filter((t) => !t.parent);
+const subTabs = guide.tabs.filter((t) => t.parent === topSlug);
+const related = getHeaderLinks(guide, tab);
+const showTabs = guide.tabs.length > 1;
+---
+
+<main id="main" class="shell">
+  <section class="window" aria-label={guide.label}>
+    <header class="win-bar">
+      <a class="win-btn" href="/" title="All guides">
+        <span aria-hidden="true">&larr;</span>
+        <span class="win-btn-text">All guides</span>
+      </a>
+      <h1 class="win-title">{guide.label}</h1>
+      <a
+        class="win-btn"
+        href={getViewUrl(guide, tab)}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Open in Google Docs"
+      >
+        <span class="win-btn-text">Open in Google Docs</span>
+        <span aria-hidden="true">&nearr;</span>
+        <span class="sr-only">(opens in a new tab)</span>
+      </a>
+    </header>
+
+    {showTabs && (
+      <nav class="tabs" aria-label={`${guide.label} sections`}>
+        <ul>
+          {topTabs.map((t) => (
+            <li>
+              <a
+                href={getTabHref(guide, t)}
+                class="tab"
+                aria-current={t.slug === topSlug ? 'page' : undefined}
+              >
+                {t.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+
+    {subTabs.length > 0 && (
+      <nav class="tabs tabs-sub" aria-label={`${topTabs.find((t) => t.slug === topSlug)?.label} pages`}>
+        <ul>
+          <li>
+            <a
+              href={getTabHref(guide, topTabs.find((t) => t.slug === topSlug)!)}
+              class="tab"
+              aria-current={tab.slug === topSlug ? 'page' : undefined}
+            >
+              Overview
+            </a>
+          </li>
+          {subTabs.map((t) => (
+            <li>
+              <a
+                href={getTabHref(guide, t)}
+                class="tab"
+                aria-current={t.slug === tab.slug ? 'page' : undefined}
+              >
+                {t.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+
+    {related.length > 0 && (
+      <nav class="related" aria-label="Related tools">
+        <span>Related</span>
+        {related.map((link) => (
+          <a href={link.href} target="_blank" rel="noopener noreferrer">{link.label}</a>
+        ))}
+      </nav>
+    )}
+
+    {tab.titled && <h2 class="doc-title">{tab.label}</h2>}
+
+    <div class="doc" data-doc data-titled={tab.titled ? '' : undefined}>
+      <p class="doc-loading" data-doc-loading role="status">Loading the guide&hellip;</p>
+      <iframe
+        src={getPreviewUrl(guide, tab)}
+        title={`${guide.label}: ${tab.label}`}
+        data-doc-frame
+      ></iframe>
+      <p class="doc-slow" data-doc-slow hidden>
+        Taking a while. <a href={getViewUrl(guide, tab)} target="_blank" rel="noopener noreferrer">Open it in Google Docs</a> instead.
+      </p>
+    </div>
+
+    <footer class="win-status">
+      <VisitorCount guideSlug={guide.slug} guideLabel={guide.label} icon={guide.icon} />
+      <span class="win-status-note">Reads live from Google Docs</span>
+    </footer>
+  </section>
+</main>
+
+<script>
+  // keep the active section visible inside the scrolling tab strips
+  document.querySelectorAll<HTMLElement>('.tabs').forEach((strip) => {
+    const current = strip.querySelector<HTMLElement>('[aria-current="page"]');
+    if (current) {
+      const left = current.offsetLeft - (strip.clientWidth - current.offsetWidth) / 2;
+      strip.scrollLeft = Math.max(0, left);
+    }
+  });
+
+  const frame = document.querySelector<HTMLIFrameElement>('[data-doc-frame]');
+  const loading = document.querySelector<HTMLElement>('[data-doc-loading]');
+  const slow = document.querySelector<HTMLElement>('[data-doc-slow]');
+  if (frame && loading && slow) {
+    const timer = window.setTimeout(() => {
+      slow.hidden = false;
+    }, 8000);
+    frame.addEventListener('load', () => {
+      window.clearTimeout(timer);
+      loading.hidden = true;
+      slow.hidden = true;
+    });
+  }
+</script>
