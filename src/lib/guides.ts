@@ -143,6 +143,11 @@ export function getPreviewUrl(guide: Guide, tab: GuideTab): string {
   return tab.googleTabId ? `${base}?tab=${tab.googleTabId}` : base;
 }
 
+export function getMobileUrl(guide: Guide, tab: GuideTab): string {
+  const base = `https://docs.google.com/document/d/${guide.docId}/mobilebasic`;
+  return tab.googleTabId ? `${base}?tab=${tab.googleTabId}` : base;
+}
+
 export function getViewUrl(guide: Guide, tab: GuideTab): string {
   const base = `https://docs.google.com/document/d/${guide.docId}/edit`;
   return tab.googleTabId ? `${base}?tab=${tab.googleTabId}` : base;

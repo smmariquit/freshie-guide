@@ -1,5 +1,5 @@
 ---
-import { GUIDES, getHeaderLinks, getPreviewUrl, getViewUrl, getTabHref } from '../lib/guides';
+import { GUIDES, getHeaderLinks, getMobileUrl, getPreviewUrl, getViewUrl, getTabHref } from '../lib/guides';
 import type { Guide, GuideTab } from '../lib/guides';
 import VisitorCount from './VisitorCount.astro';
 import Icon from './Icon.astro';
@@ -100,7 +100,18 @@ const showTabs = guide.tabs.length > 1;
         src={getPreviewUrl(guide, tab)}
         title={`${guide.label}: ${tab.label}`}
         data-doc-frame
+        data-mobile-src={getMobileUrl(guide, tab)}
       ></iframe>
+      <script is:inline>
+        // phones load Google's mobile view of this tab
+        (() => {
+          const frame = document.currentScript.previousElementSibling;
+          if (!/Android|iPhone|iPod|Mobile/i.test(navigator.userAgent)) return;
+          frame.src = frame.dataset.mobileSrc;
+          frame.parentElement.removeAttribute('data-titled');
+          document.querySelector('.doc-title')?.remove();
+        })();
+      </script>
       <p class="doc-slow" data-doc-slow hidden>
         Taking a while. <a href={getViewUrl(guide, tab)} target="_blank" rel="noopener noreferrer">Open it in Google Docs</a> instead.
       </p>
