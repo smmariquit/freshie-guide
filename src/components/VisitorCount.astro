@@ -70,7 +70,6 @@ const { guideSlug, guideLabel, icon = "🌻", sumSlugs } = Astro.props;
       const counts = await Promise.all(
         sumSlugs.map((slug) => fetchAbacusCount("get", namespace, getAbacusKey(slug))),
       );
-      // a partial sum would undercount, so keep the hub's own number unless every guide answered
       if (counts.every((c) => c !== null)) {
         count = (counts as number[]).reduce((a, b) => a + b, 0);
       }
