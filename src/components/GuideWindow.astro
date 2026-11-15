@@ -103,10 +103,11 @@ const showTabs = guide.tabs.length > 1;
         data-mobile-src={getMobileUrl(guide, tab)}
       ></iframe>
       <script is:inline>
-        // phones load Google's mobile view of this tab
+        // phones and phone-width windows load Google's mobile view of this tab
         (() => {
           const frame = document.currentScript.previousElementSibling;
-          if (!/Android|iPhone|iPod|Mobile/i.test(navigator.userAgent)) return;
+          const phone = /Android|iPhone|iPod|Mobile/i.test(navigator.userAgent) || matchMedia('(max-width: 640px)').matches;
+          if (!phone) return;
           frame.src = frame.dataset.mobileSrc;
           frame.parentElement.removeAttribute('data-titled');
           document.querySelector('.doc-title')?.remove();
