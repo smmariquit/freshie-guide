@@ -63,20 +63,20 @@ const { guideSlug, guideLabel, icon = "🌻", sumSlugs } = Astro.props;
       namespace,
       abacusKey,
     );
+    if (count === null && shouldHit) localStorage.removeItem(storageKey);
 
     const sumSlugs = root.dataset.sumSlugs?.split(",").filter(Boolean) ?? [];
     if (sumSlugs.length) {
       const counts = await Promise.all(
         sumSlugs.map((slug) => fetchAbacusCount("get", namespace, getAbacusKey(slug))),
       );
-      const known = counts.filter((c): c is number => c !== null);
-      if (known.length) count = known.reduce((a, b) => a + b, 0);
+      // a partial sum would undercount, so keep the hub's own number unless every guide answered
+      if (counts.every((c) => c !== null)) {
+        count = (counts as number[]).reduce((a, b) => a + b, 0);
+      }
     }
 
-    if (count === null) {
-      if (shouldHit) localStorage.removeItem(storageKey);
-      return;
-    }
+    if (count === null) return;
 
     numberEl.textContent = count.toLocaleString();
     labelEl.textContent = formatLabel(count, guideLabel);
