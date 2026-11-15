@@ -35,7 +35,7 @@ const guides = [...GUIDES].sort((a, b) => Number(!!b.badge) - Number(!!a.badge))
 				</ul>
 			</div>
 			<footer class="win-status">
-				<VisitorCount />
+				<VisitorCount sumSlugs={GUIDES.map((g) => g.slug)} />
 				<span class="win-status-note">&copy; {new Date().getFullYear()} Stimmie</span>
 			</footer>
 		</section>

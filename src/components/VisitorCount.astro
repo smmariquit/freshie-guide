@@ -3,9 +3,11 @@ interface Props {
   guideSlug?: string;
   guideLabel?: string;
   icon?: string;
+  /** on the hub, show the total of these guides' counters */
+  sumSlugs?: string[];
 }
 
-const { guideSlug, guideLabel, icon = "🌻" } = Astro.props;
+const { guideSlug, guideLabel, icon = "🌻", sumSlugs } = Astro.props;
 ---
 
 <div
@@ -13,6 +15,7 @@ const { guideSlug, guideLabel, icon = "🌻" } = Astro.props;
   data-visitor-counter
   data-guide-slug={guideSlug}
   data-guide-label={guideLabel}
+  data-sum-slugs={sumSlugs?.join(",")}
   hidden
 >
   <span class="visitor-count-icon" aria-hidden="true">{icon}</span>
@@ -55,16 +58,24 @@ const { guideSlug, guideLabel, icon = "🌻" } = Astro.props;
       localStorage.setItem(storageKey, today);
     }
 
-    const count = await fetchAbacusCount(
+    let count = await fetchAbacusCount(
       shouldHit ? "hit" : "get",
       namespace,
       abacusKey,
     );
+    if (count === null && shouldHit) localStorage.removeItem(storageKey);
 
-    if (count === null) {
-      if (shouldHit) localStorage.removeItem(storageKey);
-      return;
+    const sumSlugs = root.dataset.sumSlugs?.split(",").filter(Boolean) ?? [];
+    if (sumSlugs.length) {
+      const counts = await Promise.all(
+        sumSlugs.map((slug) => fetchAbacusCount("get", namespace, getAbacusKey(slug))),
+      );
+      if (counts.every((c) => c !== null)) {
+        count = (counts as number[]).reduce((a, b) => a + b, 0);
+      }
     }
+
+    if (count === null) return;
 
     numberEl.textContent = count.toLocaleString();
     labelEl.textContent = formatLabel(count, guideLabel);
